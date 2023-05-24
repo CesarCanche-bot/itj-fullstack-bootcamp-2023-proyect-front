@@ -167,7 +167,9 @@ export default function Header({ children }) {
             />
           </Search> */}
           <Box sx={{ flexGrow: 1 }} />
-          <Box>Shopping</Box>
+          <Link href="/">
+            <Box>Menu</Box>
+          </Link>
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
               size="large"
