@@ -4,8 +4,8 @@ import { Button } from "@mui/material";
 export default function AdminPage() {
   return (
     <section>
-      <div>
-        <Button variant="contained" size="large">
+      <div style={{margin: '15px'}}>
+        <Button variant="contained" size="large" color="success">
           Add new item
         </Button>
       </div>

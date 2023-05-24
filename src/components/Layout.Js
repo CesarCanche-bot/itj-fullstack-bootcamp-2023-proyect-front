@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import Header from "./Header/Header";
+import Header from "./header/Header";
 
 export default function Layout({ children }) {
   return (

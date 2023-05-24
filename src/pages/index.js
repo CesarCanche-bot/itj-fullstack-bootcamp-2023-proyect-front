@@ -12,11 +12,10 @@ export default function Home() {
       </Head>
       <section>
         <PageDescription
-          title="3C-DAILY MENU"
+          title="DAILY MENU"
           subtitle="YUCATAN FOOD"
           description="Select your favorite dish or dessert, add it to the cart, and place an
-          order.You can either pick it up at the location or request home
-          delivery."
+          order."
         />
       </section>
     </>

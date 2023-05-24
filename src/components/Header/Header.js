@@ -124,11 +124,13 @@ export default function Header({ children }) {
           aria-label="show 17 new notifications"
           color="inherit"
         >
-          <Badge badgeContent={17} color="error">
-            <ShoppingCart />
-          </Badge>
+          <Link href="/checkout">
+            <Badge badgeContent={17} color="error">
+              <ShoppingCart />
+            </Badge>
+          </Link>
         </IconButton>
-        <p>Notifications</p>
+        <p>Order</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -176,9 +178,11 @@ export default function Header({ children }) {
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <Badge badgeContent={17} color="error">
-                <ShoppingCart />
-              </Badge>
+              <Link href="/checkout">
+                <Badge badgeContent={17} color="error">
+                  <ShoppingCart />
+                </Badge>
+              </Link>
             </IconButton>
             <IconButton
               size="large"

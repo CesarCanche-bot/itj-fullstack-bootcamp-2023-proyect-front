@@ -22,7 +22,8 @@ function createData(
   rate,
   imageUrl,
   description,
-  ingredients
+  ingredients,
+  id
 ) {
   return {
     name,
@@ -32,6 +33,7 @@ function createData(
     imageUrl,
     description,
     ingredients,
+    id,
   };
 }
 
@@ -58,7 +60,12 @@ function Row(props) {
         <TableCell align="right">{row.priceWithDiscount}</TableCell>
         <TableCell align="right">{row.rate}</TableCell>
         <TableCell align="right">
-          <Button variant="contained" color="warning" size="medium">
+          <Button
+            variant="contained"
+            color="warning"
+            size="medium"
+            onClick={() => console.log("fila", row.id)}
+          >
             edit
           </Button>
         </TableCell>
@@ -95,8 +102,9 @@ Row.propTypes = {
     priceWithDiscount: PropTypes.number.isRequired,
     rate: PropTypes.number.isRequired,
     imageUrl: PropTypes.string.isRequired,
-    description: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
     ingredients: PropTypes.arrayOf(PropTypes.string),
+    id: PropTypes.string.isRequired,
   }).isRequired,
 };
 
@@ -108,7 +116,8 @@ const rows = [
     24,
     "url de la imagen",
     "descripcion de eso",
-    ["ingredient 1", "ingredient 2"]
+    ["ingredient 1", "ingredient 2"],
+    "1"
   ),
   createData(
     "Ice cream sandwich",
@@ -117,7 +126,8 @@ const rows = [
     37,
     "url de la imagen",
     "descripcion de eso",
-    ["ingredient 1", "ingredient 2"]
+    ["ingredient 1", "ingredient 2"],
+   "2"
   ),
   createData(
     "Eclair",
@@ -126,7 +136,8 @@ const rows = [
     24,
     "url de la imagen",
     "descripcion de eso",
-    ["ingredient 1", "ingredient 2"]
+    ["ingredient 1", "ingredient 2"],
+    "3"
   ),
   createData(
     "Cupcake",
@@ -135,7 +146,8 @@ const rows = [
     67,
     "url de la imagen",
     "descripcion de eso",
-    ["ingredient 1", "ingredient 2"]
+    ["ingredient 1", "ingredient 2"],
+    "4"
   ),
   createData(
     "Gingerbread",
@@ -144,7 +156,8 @@ const rows = [
     5,
     "url de la imagen",
     "descripcion de eso",
-    ["ingredient 1", "ingredient 2"]
+    ["ingredient 1", "ingredient 2"],
+    "5"
   ),
 ];
 
