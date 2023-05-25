@@ -1,7 +1,83 @@
 import Head from "next/head";
 import PageDescription from "@/components/PageDescription";
+import ProjectItem from "@/components/projectItem";
 
 export default function Home() {
+  function createData(
+    name,
+    price,
+    discount,
+    rate,
+    imageUrl,
+    description,
+    ingredients,
+    id
+  ) {
+    return {
+      name,
+      price,
+      discount,
+      rate,
+      imageUrl,
+      description,
+      ingredients,
+      id,
+    };
+  }
+
+  const items = [
+    createData(
+      "Frozen yoghurt",
+      159,
+      6.0,
+      24,
+      "url de la imagen",
+      "descripcion de eso",
+      "ingredient 1, ingredient 2",
+      "1"
+    ),
+    createData(
+      "Ice cream sandwich",
+      237,
+      23,
+      37,
+      "url de la imagen",
+      "descripcion de eso",
+      "ingredient 1, ingredient 2",
+      "2"
+    ),
+    createData(
+      "Eclair",
+      262,
+      24,
+      12,
+      "url de la imagen",
+      "descripcion de eso",
+      "ingredient 1, ingredient 2",
+      "3"
+    ),
+    createData(
+      "Cupcake",
+      305,
+      3.7,
+      67,
+      "url de la imagen",
+      "descripcion de eso",
+      "ingredient 1, ingredient 2",
+      "4"
+    ),
+    createData(
+      "Gingerbread",
+      356,
+      5,
+      12,
+      "url de la imagen",
+      "descripcion de eso",
+      "ingredient 1, ingredient 2",
+      "5"
+    ),
+  ];
+
   return (
     <>
       <Head>
@@ -17,6 +93,9 @@ export default function Home() {
           description="Select your favorite dish or dessert, add it to the cart, and place an
           order."
         />
+        {items.map((item) => (
+          <ProjectItem key={ProjectItem.id} item={item} />
+        ))}
       </section>
     </>
   );

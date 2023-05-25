@@ -11,9 +11,9 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import Link from "next/link";
+import { ShoppingCartCheckout } from "@mui/icons-material";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -126,7 +126,7 @@ export default function Header({ children }) {
         >
           <Link href="/checkout">
             <Badge badgeContent={17} color="error">
-              <ShoppingCart />
+              <ShoppingCartCheckout />
             </Badge>
           </Link>
         </IconButton>
@@ -180,7 +180,7 @@ export default function Header({ children }) {
             >
               <Link href="/checkout">
                 <Badge badgeContent={17} color="error">
-                  <ShoppingCart />
+                  <ShoppingCartCheckout/>
                 </Badge>
               </Link>
             </IconButton>
