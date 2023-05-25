@@ -18,7 +18,7 @@ import { Button } from "@mui/material";
 function createData(
   name,
   price,
-  priceWithDiscount,
+  discount,
   rate,
   imageUrl,
   description,
@@ -28,7 +28,7 @@ function createData(
   return {
     name,
     price,
-    priceWithDiscount,
+    discount,
     rate,
     imageUrl,
     description,
@@ -57,7 +57,7 @@ function Row(props) {
           {row.name}
         </TableCell>
         <TableCell align="right">{row.price}</TableCell>
-        <TableCell align="right">{row.priceWithDiscount}</TableCell>
+        <TableCell align="right">{row.discount}</TableCell>
         <TableCell align="right">{row.rate}</TableCell>
         <TableCell align="right">
           <Button
@@ -99,7 +99,7 @@ Row.propTypes = {
   row: PropTypes.shape({
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
-    priceWithDiscount: PropTypes.number.isRequired,
+    discount: PropTypes.number.isRequired,
     rate: PropTypes.number.isRequired,
     imageUrl: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
@@ -170,7 +170,7 @@ export default function TableProducts() {
             <TableCell />
             <TableCell>Food name</TableCell>
             <TableCell align="right">Price</TableCell>
-            <TableCell align="right">Price with discount</TableCell>
+            <TableCell align="right">Discount</TableCell>
             <TableCell align="right">Rate</TableCell>
           </TableRow>
         </TableHead>
