@@ -7,28 +7,43 @@ export default function ProjectItem({ item }) {
       <CardMedia
         component="img"
         heigth="1"
-        image="https://i.blogs.es/705187/12/1366_2000.jpg"
+        image={item.imageUrl}
         alt="Imagen del menu"
       />
       <CardContent>
         <Typography variant="h6" component="div">
           {item.name}
         </Typography>
-        <Typography variant="subtitle1" color="text.secondary">
-          Precio: ${item.price}
+        <Typography
+          variant="subtitle1"
+          color="text.primary"
+          display="flex"
+          style={{ alignItems: "center" }}
+        >
+          Rating: <Typography color="text.secondary">{item.rate}</Typography>
         </Typography>
-        <Typography variant="subtitle1" color="text.secondary">
-          Rating: {item.rate}
+        <Chip label={` PRECIO CON OFERTA DE %${item.discount}`} />
+        <Typography
+          variant="subtitle1"
+          color="text.primary"
+          display="flex"
+          style={{ alignItems: "center" }}
+        >
+          Precio: <Typography color="text.secondary">${item.price}</Typography>
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {item.description}
+        <ItemActions id={item._id} onDeleteCart={() => console.log("delete")} />
+        <Typography
+          variant="body1"
+          color="text.secondary"
+          display="flex"
+          style={{ alignItems: "start" }}
+        >
+          Ingredientes:{" "}
+          {item.ingredients.map((ingredient) => {
+            return ` -${ingredient}`;
+          })}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Ingredientes: {item.ingredients}
-        </Typography>
-        <Chip label={` PRECIO CON OFERTA % ${item.discount}`} />
       </CardContent>
-      <ItemActions id={item.id} onDeleteCart={() => console.log("delete")} />
     </Card>
   );
 }
