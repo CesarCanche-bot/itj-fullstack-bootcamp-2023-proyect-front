@@ -15,28 +15,6 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Button } from "@mui/material";
 
-function createData(
-  name,
-  price,
-  discount,
-  rate,
-  imageUrl,
-  description,
-  ingredients,
-  id
-) {
-  return {
-    name,
-    price,
-    discount,
-    rate,
-    imageUrl,
-    description,
-    ingredients,
-    id,
-  };
-}
-
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
@@ -83,9 +61,16 @@ function Row(props) {
                 Details
               </Typography>
               <section>
+                <strong>Image url</strong>
                 <div>{row.imageUrl}</div>
+                <strong>Food description</strong>
                 <div>{row.description}</div>
-                <div>{row.ingredients}</div>
+                <strong>Ingredients</strong>
+                <div>
+                  {row.ingredients.map((ingredient) => {
+                    return ` -${ingredient}`;
+                  })}
+                </div>
               </section>
             </Box>
           </Collapse>
@@ -104,64 +89,12 @@ Row.propTypes = {
     imageUrl: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     ingredients: PropTypes.arrayOf(PropTypes.string),
-    id: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
   }).isRequired,
 };
 
-const rows = [
-  createData(
-    "Frozen yoghurt",
-    159,
-    6.0,
-    24,
-    "url de la imagen",
-    "descripcion de eso",
-    ["ingredient 1", "ingredient 2"],
-    "1"
-  ),
-  createData(
-    "Ice cream sandwich",
-    237,
-    9.0,
-    37,
-    "url de la imagen",
-    "descripcion de eso",
-    ["ingredient 1", "ingredient 2"],
-   "2"
-  ),
-  createData(
-    "Eclair",
-    262,
-    16.0,
-    24,
-    "url de la imagen",
-    "descripcion de eso",
-    ["ingredient 1", "ingredient 2"],
-    "3"
-  ),
-  createData(
-    "Cupcake",
-    305,
-    3.7,
-    67,
-    "url de la imagen",
-    "descripcion de eso",
-    ["ingredient 1", "ingredient 2"],
-    "4"
-  ),
-  createData(
-    "Gingerbread",
-    356,
-    16.0,
-    5,
-    "url de la imagen",
-    "descripcion de eso",
-    ["ingredient 1", "ingredient 2"],
-    "5"
-  ),
-];
-
-export default function TableProducts() {
+export default function TableProducts({ foods }) {
+  console.log("llega", foods);
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
@@ -175,8 +108,8 @@ export default function TableProducts() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
+          {foods.map((row) => (
+            <Row key={row._id} row={row} />
           ))}
         </TableBody>
       </Table>

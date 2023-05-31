@@ -7,6 +7,22 @@ export const getFoods = async () => {
     return responseJson.foods;
   } catch (err) {
     console.log("error", err);
-    return []
+    return [];
+  }
+};
+
+export const createFood = async (food) => {
+  try {
+    const response = await fetch(`${SERVER_URL}/foods`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(food),
+    });
+    const foodJson = await response.json()
+    console.log('food created', foodJson);
+    return foodJson.foodSaved;
+  } catch (err) {
+    console.log(err);
+    return {};
   }
 };
