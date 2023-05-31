@@ -12,21 +12,37 @@ import { useRouter } from "next/router";
 import { Tooltip } from "@mui/material";
 import { CartContext } from "../Layout";
 
-export default function ItemActions({ id, onAddCart, onDeleteCart }) {
+export default function ItemActions({ id, price }) {
   const router = useRouter();
   const {
     cartItemsNumber,
     setCartItemsNumber,
     itemsSelected,
-    addItemSelected,
+    setItemsSelected,
   } = useContext(CartContext);
-  console.log(cartItemsNumber);
+  console.log("items selected cart", itemsSelected);
 
   const itemOnCart = itemsSelected.find((item) => item._id === id);
 
-  const [count, setCount] = React.useState(
-    itemOnCart ? itemOnCart.itemNumber : 0
-  );
+  const addItemSelected = ({ _id, itemNumber }) => {
+    const indexItem = itemsSelected.findIndex((item) => item._id === _id);
+    indexItem === -1
+      ? (() => {
+          setItemsSelected([
+            ...itemsSelected,
+            { _id: _id, itemNumber: itemNumber, price: price },
+          ]);
+        })()
+      : (() => {
+          const itemsSelectedNew = itemsSelected.map((item) =>
+            item._id === _id ? { ...item, itemNumber: itemNumber } : item
+          );
+          setItemsSelected(itemsSelectedNew);
+        })();
+  };
+
+  const count = itemOnCart ? itemOnCart.itemNumber : 0;
+
   const [invisible, setInvisible] = React.useState(false);
 
   const handleBadgeVisibility = () => {
@@ -56,9 +72,8 @@ export default function ItemActions({ id, onAddCart, onDeleteCart }) {
             aria-label="reduce"
             onClick={() => {
               let x = Math.max(count - 1, 0);
-              let a = Math.max(cartItemsNumber - 1, 0)
-              setCount(x);
-              addItemSelected({_id:id, itemNumber: x})
+              let a = Math.max(cartItemsNumber - 1, 0);
+              addItemSelected({ _id: id, itemNumber: x });
               setCartItemsNumber(a);
             }}
           >
@@ -67,9 +82,7 @@ export default function ItemActions({ id, onAddCart, onDeleteCart }) {
           <Button
             aria-label="increase"
             onClick={() => {
-              let x = count + 1
-              setCount(x);
-              addItemSelected({_id:id, itemNumber: x})
+              addItemSelected({ _id: id, itemNumber: count + 1 });
               setCartItemsNumber(cartItemsNumber + 1);
             }}
           >

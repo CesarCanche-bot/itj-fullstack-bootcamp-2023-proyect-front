@@ -31,7 +31,7 @@ export default function ProjectItem({ item }) {
         >
           Precio: <Typography color="text.secondary">${item.price}</Typography>
         </Typography>
-        <ItemActions id={item._id} onDeleteCart={() => console.log("delete")} />
+        <ItemActions id={item._id}  price={item.price}/>
         <Typography
           variant="body1"
           color="text.secondary"

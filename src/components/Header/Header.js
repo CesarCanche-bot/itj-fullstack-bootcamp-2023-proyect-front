@@ -15,6 +15,9 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import Link from "next/link";
 import { ShoppingCartCheckout } from "@mui/icons-material";
 
+import { CartContext } from "../Layout";
+import { useContext } from "react";
+
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -61,6 +64,8 @@ export default function Header({ children }) {
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const {cartItemsNumber} = useContext(CartContext);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -121,11 +126,11 @@ export default function Header({ children }) {
       <MenuItem>
         <IconButton
           size="large"
-          aria-label="show 17 new notifications"
+          aria-label="show new notifications"
           color="inherit"
         >
           <Link href="/checkout">
-            <Badge badgeContent={17} color="error">
+            <Badge badgeContent={cartItemsNumber} color="error">
               <ShoppingCartCheckout />
             </Badge>
           </Link>
@@ -175,11 +180,11 @@ export default function Header({ children }) {
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
               size="large"
-              aria-label="show 17 new notifications"
+              aria-label="show new notifications"
               color="inherit"
             >
               <Link href="/checkout">
-                <Badge badgeContent={17} color="error">
+                <Badge badgeContent={cartItemsNumber} color="error">
                   <ShoppingCartCheckout/>
                 </Badge>
               </Link>
