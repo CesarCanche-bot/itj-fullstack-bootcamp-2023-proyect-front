@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import { Tooltip } from "@mui/material";
 import { CartContext } from "../Layout";
 
-export default function ItemActions({ id, price }) {
+export default function ItemActions({ id, price, name }) {
   const router = useRouter();
   const {
     cartItemsNumber,
@@ -22,20 +22,20 @@ export default function ItemActions({ id, price }) {
   } = useContext(CartContext);
   console.log("items selected cart", itemsSelected);
 
-  const itemOnCart = itemsSelected.find((item) => item._id === id);
+  const itemOnCart = itemsSelected.find((item) => item._idFood === id);
 
   const addItemSelected = ({ _id, itemNumber }) => {
-    const indexItem = itemsSelected.findIndex((item) => item._id === _id);
+    const indexItem = itemsSelected.findIndex((item) => item._idFood === _id);
     indexItem === -1
       ? (() => {
           setItemsSelected([
             ...itemsSelected,
-            { _id: _id, itemNumber: itemNumber, price: price },
+            { _idFood: _id, itemNumber: itemNumber, price: price, name: name },
           ]);
         })()
       : (() => {
           const itemsSelectedNew = itemsSelected.map((item) =>
-            item._id === _id ? { ...item, itemNumber: itemNumber } : item
+            item._idFood === _id ? { ...item, itemNumber: itemNumber } : item
           );
           setItemsSelected(itemsSelectedNew);
         })();
@@ -73,7 +73,7 @@ export default function ItemActions({ id, price }) {
             onClick={() => {
               let x = Math.max(count - 1, 0);
               let a = Math.max(cartItemsNumber - 1, 0);
-              addItemSelected({ _id: id, itemNumber: x });
+              addItemSelected({ _idFood: id, itemNumber: x });
               setCartItemsNumber(a);
             }}
           >
