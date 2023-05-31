@@ -16,7 +16,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Button } from "@mui/material";
 
 function Row(props) {
-  const { row } = props;
+  const { row, handleEdit } = props;
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -42,7 +42,7 @@ function Row(props) {
             variant="contained"
             color="warning"
             size="medium"
-            onClick={() => console.log("fila", row.id)}
+            onClick={()=>handleEdit(row)}
           >
             edit
           </Button>
@@ -93,8 +93,7 @@ Row.propTypes = {
   }).isRequired,
 };
 
-export default function TableProducts({ foods }) {
-  console.log("llega", foods);
+export default function TableProducts({ foods, handleEdit }) {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
@@ -109,7 +108,7 @@ export default function TableProducts({ foods }) {
         </TableHead>
         <TableBody>
           {foods.map((row) => (
-            <Row key={row._id} row={row} />
+            <Row key={row._id} row={row} handleEdit={handleEdit} />
           ))}
         </TableBody>
       </Table>

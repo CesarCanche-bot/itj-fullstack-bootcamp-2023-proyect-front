@@ -18,11 +18,26 @@ export const createFood = async (food) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(food),
     });
-    const foodJson = await response.json()
-    console.log('food created', foodJson);
+    const foodJson = await response.json();
+    console.log("food created", foodJson);
     return foodJson.foodSaved;
   } catch (err) {
     console.log(err);
+    return {};
+  }
+};
+
+export const updateFood = async (food) => {
+  try {
+    const response = await fetch(`${SERVER_URL}/foods/${food._id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(food),
+    });
+    const foodJson = await response.json();
+    return foodJson;
+  } catch (err) {
+    console.log("error updating", err);
     return {};
   }
 };
