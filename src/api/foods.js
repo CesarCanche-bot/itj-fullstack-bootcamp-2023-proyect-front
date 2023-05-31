@@ -11,6 +11,17 @@ export const getFoods = async () => {
   }
 };
 
+export const getFood = async (id) => {
+  try {
+    const response = await fetch(`${SERVER_URL}/foods/${id}`);
+    const foodJson = await response.json();
+    return foodJson.food;
+  } catch (err) {
+    console.log(err);
+    return []
+  }
+};
+
 export const createFood = async (food) => {
   try {
     const response = await fetch(`${SERVER_URL}/foods`, {
@@ -39,5 +50,17 @@ export const updateFood = async (food) => {
   } catch (err) {
     console.log("error updating", err);
     return {};
+  }
+};
+
+export const deleteFood = async (id) => {
+  try {
+    const response = await fetch(`${SERVER_URL}/foods/${id}`, {
+      method: "DELETE",
+    });
+    return response.status === 204;
+  } catch (err) {
+    console.log(err);
+    return false;
   }
 };
