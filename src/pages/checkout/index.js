@@ -30,9 +30,10 @@ export default function CheckoutPage() {
         >{`Checkout: $${totalPrice}`}</Button>
       </section>
       <Grid container style={{ width: "50vw" }}>
-        <Grid item xs={8}>
+        <Grid item xs={5}>
           <strong>Food</strong>
         </Grid>
+        <Grid item xs={3}></Grid>
         <Grid item xs={2}>
           <strong>Cant</strong>
         </Grid>
