@@ -22,13 +22,18 @@ export default function CheckoutPage() {
         title="Checkout"
         description="Review your items and place your order"
       />
-      <section style={{ textAlign: "center", marginBottom: "1rem" }}>
-        <Button
-          variant="contained"
-          color="warning"
-          size="large"
-        >{`Checkout: $${totalPrice}`}</Button>
-      </section>
+      {itemsSelected.length === 0 ? (
+        <></>
+      ) : (
+        <section style={{ textAlign: "center", marginBottom: "1rem" }}>
+          <Button
+            variant="contained"
+            color="warning"
+            size="large"
+          >{`Checkout: $${totalPrice}`}</Button>
+        </section>
+      )}
+
       <Grid container style={{ width: "50vw" }}>
         <Grid item xs={5}>
           <strong>Food</strong>

@@ -8,7 +8,7 @@ export default function CheckoutItem({ item }) {
         <Typography>{item.name}</Typography>
       </Grid>
       <Grid item xs={3}>
-        <ItemCheckoutActions />
+        <ItemCheckoutActions count={item.itemNumber} id={item._idFood}/>
       </Grid>
       <Grid item xs={2}>
         <Typography>{item.itemNumber}</Typography>

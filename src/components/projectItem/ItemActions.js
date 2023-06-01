@@ -34,10 +34,22 @@ export default function ItemActions({ id, price, name }) {
           ]);
         })()
       : (() => {
-          const itemsSelectedNew = itemsSelected.map((item) =>
-            item._idFood === _id ? { ...item, itemNumber: itemNumber } : item
-          );
-          setItemsSelected(itemsSelectedNew);
+          itemNumber === 0
+            ? (() => {
+                const filtered = itemsSelected.filter(
+                  (item) => item._idFood !== _id
+                );
+                console.log("filtered", filtered);
+                setItemsSelected(filtered);
+              })()
+            : (() => {
+                const itemsSelectedNew = itemsSelected.map((item) =>
+                  item._idFood === _id
+                    ? { ...item, itemNumber: itemNumber }
+                    : item
+                );
+                setItemsSelected(itemsSelectedNew);
+              })();
         })();
   };
 
@@ -73,7 +85,7 @@ export default function ItemActions({ id, price, name }) {
             onClick={() => {
               let x = Math.max(count - 1, 0);
               let a = Math.max(cartItemsNumber - 1, 0);
-              addItemSelected({ _idFood: id, itemNumber: x });
+              addItemSelected({ _id: id, itemNumber: x });
               setCartItemsNumber(a);
             }}
           >
