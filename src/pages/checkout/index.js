@@ -3,10 +3,18 @@ import { useContext, useState } from "react";
 import { CartContext } from "@/components/Layout";
 import CheckoutItem from "@/components/checkoutItem";
 import { Button, Grid, Typography } from "@mui/material";
+import CheckoutAddressModal from "@/components/modals/CheckoutAddressModal";
+import { createOrder } from "@/api/foods";
+import { useRouter } from "next/router";
 
 export default function CheckoutPage() {
-  const { itemsSelected } = useContext(CartContext);
-  console.log("checkout", itemsSelected);
+  const router = useRouter();
+  const { itemsSelected, setCartItemsNumber, setItemsSelected } =
+    useContext(CartContext);
+  const [
+    isOpenCheckoutShippingAddressModal,
+    setIsOpenCheckoutShippingAddressModal,
+  ] = useState(false);
 
   const calculateTotalPrice = () => {
     let total = 0;
@@ -15,6 +23,18 @@ export default function CheckoutPage() {
   };
 
   const [totalPrice, setTotalPrice] = useState(calculateTotalPrice);
+
+  const handleOnSubmit = async (values) => {
+    const newOrder = await createOrder(values);
+    console.log("order placed", newOrder);
+    !!newOrder.message
+      ? (() => {
+          setCartItemsNumber(0);
+          setItemsSelected([]);
+          router.back();
+        })()
+      : console.log("error saving order");
+  };
 
   return (
     <section>
@@ -30,6 +50,7 @@ export default function CheckoutPage() {
             variant="contained"
             color="warning"
             size="large"
+            onClick={() => setIsOpenCheckoutShippingAddressModal(true)}
           >{`Checkout: $${totalPrice}`}</Button>
         </section>
       )}
@@ -49,6 +70,12 @@ export default function CheckoutPage() {
           <CheckoutItem key={item._idFood} item={item} />
         ))}
       </Grid>
+      <CheckoutAddressModal
+        open={isOpenCheckoutShippingAddressModal}
+        onClose={() => setIsOpenCheckoutShippingAddressModal(false)}
+        onSubmit={handleOnSubmit}
+        itemsSelected={itemsSelected}
+      />
     </section>
   );
 }

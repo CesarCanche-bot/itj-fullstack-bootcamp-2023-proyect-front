@@ -18,7 +18,7 @@ export const getFood = async (id) => {
     return foodJson.food;
   } catch (err) {
     console.log(err);
-    return []
+    return [];
   }
 };
 
@@ -62,5 +62,20 @@ export const deleteFood = async (id) => {
   } catch (err) {
     console.log(err);
     return false;
+  }
+};
+
+export const createOrder = async (order) => {
+  try {
+    const response = await fetch(`${SERVER_URL}/orders`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(order),
+    });
+    const orderJson = await response.json();
+    return orderJson;
+  } catch (err) {
+    console.log(err);
+    return {};
   }
 };
