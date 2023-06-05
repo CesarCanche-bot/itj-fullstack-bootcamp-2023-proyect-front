@@ -1,5 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Grid, TextField } from "@mui/material";
+import  Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
 import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 

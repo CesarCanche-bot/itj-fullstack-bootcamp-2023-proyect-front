@@ -1,6 +1,7 @@
-const SERVER_URL = "http://localhost:3002";
+const SERVER_URL = "http://localhost:3002"
 
 export const getFoods = async () => {
+  console.log('sss2', SERVER_URL);
   try {
     const response = await fetch(`${SERVER_URL}/foods`);
     const responseJson = await response.json();

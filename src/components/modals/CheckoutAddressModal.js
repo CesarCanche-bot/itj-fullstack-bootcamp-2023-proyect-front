@@ -1,10 +1,9 @@
-const {
-  Dialog,
-  DialogTitle,
-  DialogActions,
-  Button,
-  DialogContent,
-} = require("@mui/material");
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogActions from "@mui/material/DialogActions";
+import Button from "@mui/material/Button";
+import DialogContent from "@mui/material/DialogContent";
+
 import CheckoutForm from "../forms/CheckoutForm";
 
 export default function CheckoutAddressModal({ open, onClose, onSubmit, itemsSelected }) {

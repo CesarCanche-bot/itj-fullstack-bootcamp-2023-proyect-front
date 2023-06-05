@@ -1,4 +1,9 @@
-import { Card, CardContent, CardMedia, Chip, Typography } from "@mui/material";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent"
+import CardMedia from "@mui/material/CardMedia";
+import Chip from "@mui/material/Chip";
+import Typography from "@mui/material/Typography"
+
 import ItemActions from "./ItemActions";
 
 export default function ProjectItem({ item }) {

@@ -7,9 +7,9 @@ import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
-import { ShoppingCart } from "@mui/icons-material";
+import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import { useRouter } from "next/router";
-import { Tooltip } from "@mui/material";
+import Tooltip  from "@mui/material/Tooltip";
 import { CartContext } from "../Layout";
 
 export default function ItemActions({ id, price, name }) {

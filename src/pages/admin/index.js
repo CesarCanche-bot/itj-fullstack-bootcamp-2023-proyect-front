@@ -37,7 +37,7 @@ export default function AdminPage() {
       const foods = await getFoods();
       setFoods(foods);
     } catch (err) {
-      console.log("error getting foos info");
+      console.log("error getting foods info");
     }
   };
 

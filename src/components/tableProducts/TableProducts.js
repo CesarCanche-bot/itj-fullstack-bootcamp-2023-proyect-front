@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Button } from "@mui/material";
+import Button  from "@mui/material/Button";
 
 function Row(props) {
   const { row, handleEdit, handleDelete } = props;
@@ -36,7 +36,7 @@ function Row(props) {
         </TableCell>
         <TableCell align="right">{row.price}</TableCell>
         <TableCell align="right">{row.discount}</TableCell>
-        <TableCell align="right">{row.rate}</TableCell>
+        <TableCell align="right">{row?.rate}</TableCell>
         <TableCell align="right">
           <Button
             variant="contained"
@@ -90,7 +90,7 @@ Row.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     discount: PropTypes.number.isRequired,
-    rate: PropTypes.number.isRequired,
+    rate: PropTypes.number,
     imageUrl: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     ingredients: PropTypes.arrayOf(PropTypes.string),
