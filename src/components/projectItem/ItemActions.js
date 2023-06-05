@@ -20,7 +20,7 @@ export default function ItemActions({ id, price, name }) {
     itemsSelected,
     setItemsSelected,
   } = useContext(CartContext);
-  console.log("items selected cart", itemsSelected);
+ // console.log("items selected cart", itemsSelected);
 
   const itemOnCart = itemsSelected.find((item) => item._idFood === id);
 
