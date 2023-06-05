@@ -20,7 +20,7 @@ export default function ItemForm({ onSubmit, editValues }) {
     discount: 0,
     imageUrl: "",
     description: "",
-    ingredients: ingredients,
+    ingredients: [],
   };
 
   const itemFormSchema = yup.object().shape({
