@@ -1,7 +1,7 @@
 import React from "react";
 import { createContext, useState } from "react";
 import  Container from "@mui/material/Container";
-import Header from "../header/Header.js";
+import Header from "../header/Header";
 
 export const CartContext = createContext();
 
@@ -18,7 +18,7 @@ export default function Layout({ children }) {
         setItemsSelected,
       }}
     >
-      <Header></Header>
+      <Header />
       <Container fixed>
         <main>{children}</main>
       </Container>
