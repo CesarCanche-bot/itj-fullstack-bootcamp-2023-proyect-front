@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { CartContext } from "../Layout";
+import { CartContext } from "../Layout/Layout.js";
 import { useContext } from "react";
 
 export default function ItemCheckoutActions({ count, id }) {
