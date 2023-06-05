@@ -10,7 +10,7 @@ import ReadMoreIcon from "@mui/icons-material/ReadMore";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import { useRouter } from "next/router";
 import Tooltip  from "@mui/material/Tooltip";
-import { CartContext } from "../Layout";
+import { CartContext } from "../Layout/Layout.js";
 
 export default function ItemActions({ id, price, name }) {
   const router = useRouter();

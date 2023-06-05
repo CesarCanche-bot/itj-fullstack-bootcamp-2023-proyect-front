@@ -14,7 +14,7 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import Link from "next/link";
 import ShoppingCartCheckout from "@mui/icons-material/ShoppingCartCheckout";
 
-import { CartContext } from "../Layout";
+import { CartContext } from "../Layout/Layout.js";
 import { useContext } from "react";
 
 const Search = styled("div")(({ theme }) => ({

@@ -17,7 +17,7 @@ export default function Home({ foods }) {
         <PageDescription
           title="DAILY MENU"
           subtitle="YUCATAN FOOD"
-          description="Select your favorite dish or dessert, add it to the cart, and place an
+          description="Select your favorite dish or dessert, add it to the cart, and place your
           order."
         />
         {foods.map((food) => (

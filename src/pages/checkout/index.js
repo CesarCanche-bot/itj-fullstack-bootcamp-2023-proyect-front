@@ -1,6 +1,6 @@
 import PageDescription from "@/components/PageDescription";
 import { useContext, useState } from "react";
-import { CartContext } from "@/components/Layout";
+import { CartContext } from "@/components/Layout/Layout";
 import CheckoutItem from "@/components/checkoutItem";
 import { Button, Grid, Typography } from "@mui/material";
 import CheckoutAddressModal from "@/components/modals/CheckoutAddressModal";
