@@ -2,7 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import  Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import { Controller, useForm } from "react-hook-form";
-import * as yup from "yup";
+import  * as yup from "yup";
 
 export default function CheckoutForm({ onSubmit, itemsSelected }) {
   const defaultValues = {

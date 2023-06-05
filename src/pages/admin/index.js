@@ -27,11 +27,7 @@ export default function AdminPage() {
     const isDeleted = await deleteFood(id);
     if (isDeleted) setFoods((prev) => prev.filter((p) => p._id !== id));
   };
-
-  useEffect(() => {
-    fetchFoods();
-  }, []);
-
+  
   const fetchFoods = async () => {
     try {
       const foods = await getFoods();
@@ -40,6 +36,11 @@ export default function AdminPage() {
       console.log("error getting foods info");
     }
   };
+  
+  useEffect(() => {
+    fetchFoods();
+  }, []);
+
 
   return (
     <section>
