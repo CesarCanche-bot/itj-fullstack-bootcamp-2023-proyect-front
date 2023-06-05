@@ -1,7 +1,7 @@
 import React from "react";
 import { createContext, useState } from "react";
 import  Container from "@mui/material/Container";
-import Header from "../header/Header";
+import Header from "../header/Header.js";
 
 export const CartContext = createContext();
 
